@@ -76,7 +76,9 @@ function recycle_(event) { return (itemId, products) => {
         "jasper": {dust: [4.9, 2], fluid: [1, 1], ingot: [1, 1, 1], temp: 0},
         "shale": {dust: [4.9, 2], fluid: [1, 1], ingot: [1, 1, 1], temp: 0},
         "myalite": {dust: [4.9, 2], fluid: [1, 1], ingot: [1, 1, 1], temp: 0},
-
+        "permafrost": {dust: [4.9, 2], fluid: [1, 1], ingot: [1, 1, 1], temp: 0},
+        "calcite": {dust: [7.5, 2], fluid: [1, 1], ingot: [1, 1, 1], temp: 0},
+        "deepslate": {dust: [7.5, 2], fluid: [1, 1], ingot: [1, 1, 1], temp: 0},
     }
     var DURATION = 0
     var ENERGY = 1
@@ -118,8 +120,6 @@ function recycle_(event) { return (itemId, products) => {
 
     }
 
-    console.log(itemId)
-    console.log(GTmacerator)
     event.recipes.gtceu.macerator('foxtech:' + itemId.replace(':', '__').replace('#','').toLowerCase())
         .itemInputs(itemId)
         .itemOutputs(GTmacerator.outputs)

@@ -10,8 +10,10 @@ GTCEuStartupEvents.registry('gtceu:material', event => {
         .components('2x andesite', '1x iron', '1x zinc')
         .flags(GTMaterialFlags.DECOMPOSITION_BY_CENTRIFUGING)
         .fluid()
+    
     //GTMaterials.Andesite.setProperty(PropertyKey.DUST, new $DustProperty());
     GTMaterials.Ash.setProperty(PropertyKey.INGOT, new $IngotProperty())
+    //GTMaterials.Dirt.setProperty(PropertyKey.DIRT, new $DustProperty())
     event.create('limestone')
         .dust()
         .color(0x8E8B78).iconSet(GTMaterialIconSet.DULL)
@@ -28,5 +30,11 @@ GTCEuStartupEvents.registry('gtceu:material', event => {
         .dust()
         .color(0x401D5F).iconSet(GTMaterialIconSet.DULL)
         //.components().flags().fluid()
+    event.create('permafrost')
+        .dust()
+        .color(0x9999FF).iconSet(GTMaterialIconSet.DULL)
+        .components('1x clay', '1x ice', '1x stone')
+        .flags(GTMaterialFlags.DECOMPOSITION_BY_CENTRIFUGING)
+
 
 })

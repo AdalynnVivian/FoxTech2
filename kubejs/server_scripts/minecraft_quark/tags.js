@@ -69,4 +69,18 @@ ServerEvents.tags('item', event => {
     toTag('foxtech:slabs/myalite', ['quark:myalite_slab', 'quark:myalite_bricks_slab', 'quark:polished_myalite_slab'])
     toTag('foxtech:vertical_slabs/myalite', ['quark:myalite_vertical_slab', 'quark:myalite_bricks_vertical_slab', 'quark:polished_myalite_vertical_slab'])
     toTag('foxtech:walls/myalite', ['quark:myalite_wall', 'quark:myalite_bricks_wall'])
+
+    toTag('foxtech:blocks/permafrost', ['quark:permafrost', 'quark:permafrost_bricks'])
+    toTag('foxtech:stairs/permafrost', ['quark:permafrost_stairs', 'quark:permafrost_bricks_stairs'])
+    toTag('foxtech:slabs/permafrost', ['quark:permafrost_slab', 'quark:permafrost_bricks_slab'])
+    toTag('foxtech:vertical_slabs/permafrost', ['quark:permafrost_vertical_slab', 'quark:permafrost_vertical_bricks_slab'])
+    toTag('foxtech:walls/permafrost', ['quark:permafrost_wall', 'quark:permafrost_bricks_wall'])
+
+    toTag('foxtech:blocks/calcite', ['minecraft:calcite', 'quark:polished_calcite', 'quark:calcite_bricks',
+        'quark:chiseled_calcite_bricks', 'quark:calcite_pillar'])
+    toTag('foxtech:stairs/calcite', ['quark:calcite_bricks_stairs', 'quark:calcite_stairs', 'quark:polished_calcite_stairs'])
+    toTag('foxtech:slabs/calcite', ['quark:calcite_slab', 'quark:polished_calcite_slab', 'quark:calcite_bricks_slab'])
+    toTag('foxtech:vertical_slabs/calcite', ['quark:calcite_vertical_slab', 'quark:polished_calcite_vertical_slab', 'quark:calcite_bricks_vertical_slab'])
+    toTag('foxtech:walls/calcite', ['quark:calcite_bricks_wall', 'quark:calcite_wall'])
+
 })

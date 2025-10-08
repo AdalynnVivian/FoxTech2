@@ -14,12 +14,13 @@ ServerEvents.recipes(event => {
     recycle('#minecraft:wooden_trapdoors', ['135x wood'])
     recycle('#minecraft:wooden_buttons', ['10x wood'])
 
-    function stone(material) {
-        recycle('#foxtech:blocks/'+material, ['90x '+material])
-        recycle('#foxtech:stairs/'+material, ['67.5x '+material])
-        recycle('#foxtech:slabs/'+material, ['45x '+material])
-        recycle('#foxtech:vertical_slabs/'+material, ['45x '+material])
-        recycle('#foxtech:walls/'+material, ['90x '+material])
+    function stone(material, gt) {
+        gt = gt === undefined ? material : gt
+        recycle('#foxtech:blocks/'+material, ['90x '+gt])
+        recycle('#foxtech:stairs/'+material, ['67.5x '+gt])
+        recycle('#foxtech:slabs/'+material, ['45x '+gt])
+        recycle('#foxtech:vertical_slabs/'+material, ['45x '+gt])
+        recycle('#foxtech:walls/'+material, ['90x '+gt])
     }
     stone('stone')
     stone('granite')
@@ -29,10 +30,10 @@ ServerEvents.recipes(event => {
     stone('jasper')
     stone('shale')
     stone('myalite')
-    //stone('permafrost')
-    //stone('calcite')
+    stone('permafrost')
+    stone('calcite')
+    //stone('dripstone')
     //stone('tuff')
-    //stone('deepslate')
-    // I am in immense pain
+    stone('deepslate')
 
 })
