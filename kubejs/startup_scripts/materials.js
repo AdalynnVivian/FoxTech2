@@ -39,7 +39,7 @@ GTCEuStartupEvents.registry('gtceu:material', event => {
     event.create('soul_quartz_sand')
         .dust()
         .formula('?((SiO2)(SiO2))')
-        .color(0x231914).iconSet(GTMaterialIconSet.DULL)
+        .color(0x36261D).iconSet(GTMaterialIconSet.DULL)
 
 
 })
