@@ -110,7 +110,17 @@
     "tagprefix.jasper": "Jasper %s Ore",
     "tagprefix.shale": "Shale %s Ore",
     "tagprefix.myalite": "Myalite %s Ore",
-
+    "tagprefix.quark_permafrost": "Permaforst (Quark) %s Ore",
+    
     "material.gtceu.andesite_alloy": "Andesite Alloy",
-    "material.gtceu.soul_quartz_sand": "Soul Quartz Sand"
+    "material.gtceu.soul_quartz_sand": "Soul Quartz Sand",
+    "material.gtceu.dirt": "Clay Loam",
+    "material.gtceu.mud": "Mud",
+    "material.gtceu.prismarine": "Prismarine",
+    "material.gtceu.dark_prismarine": "Dark Prismarine",
+    "material.gtceu.limestone": "Limestone",
+    "material.gtceu.jasper": "Jasper",
+    "material.gtceu.shale": "Shale",
+    "material.gtceu.myalite": "Myalite",
+    "material.gtceu.permafrost": "Permafrost"
 }

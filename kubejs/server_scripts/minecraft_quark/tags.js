@@ -127,6 +127,19 @@ ServerEvents.tags('item', event => {
         'quark:sandstone_bricks_vertical_slab'])
     toTag('foxtech:walls/sandstone', ['minecraft:sandstone_wall', 'quark:sandstone_bricks_wall'])
 
+    toTag('foxtech:blocks/dirt', ['quark:dirt_bricks'])
+    toTag('foxtech:stairs/dirt', ['quark:dirt_bricks_stairs'])
+    toTag('foxtech:slabs/dirt', ['quark:dirt_bricks_slab'])
+    toTag('foxtech:vertical_slabs/dirt', ['quark:dirt_bricks_vertical_slab'])
+    toTag('foxtech:walls/dirt', ['quark:dirt_bricks_wall'])
+
+    toTag('foxtech:blocks/mud', ['minecraft:packed_mud', 'minecraft:mud_bricks', 'quark:carved_mud_bricks',
+        'quark:mud_pillar', 'quark:mud_brick_lattice'])
+    toTag('foxtech:stairs/mud', ['minecraft:mud_brick_stairs'])
+    toTag('foxtech:slabs/mud', ['minecraft:mud_brick_slab'])
+    toTag('foxtech:vertical_slabs/mud', ['quark:mud_brick_vertical_slab'])
+    toTag('foxtech:walls/mud', ['minecraft:mud_brick_wall'])
+
     toTag('foxtech:blocks/red_sandstone', ['minecraft:red_sandstone', 'minecraft:chiseled_red_sandstone', 'minecraft:smooth_red_sandstone',
         'minecraft:cut_red_sandstone', 'quark:red_sandstone_bricks'])
     toTag('foxtech:stairs/red_sandstone', ['minecraft:red_sandstone_stairs', 'minecraft:smooth_red_sandstone_stairs', 'quark:red_sandstone_bricks_stairs'])
@@ -144,4 +157,15 @@ ServerEvents.tags('item', event => {
     toTag('foxtech:vertical_slabs/soul_sandstone', ['quark:soul_sandstone_vertical_slab', 'quark:smooth_soul_sandstone_vertical_slab', 'quark:cut_soul_sandstone_vertical_slab',
         'quark:soul_sandstone_bricks_vertical_slab'])
     toTag('foxtech:walls/soul_sandstone', ['quark:soul_sandstone_wall', 'quark:soul_sandstone_bricks_wall'])
+
+    toTag('foxtech:blocks/prismarine', ['minecraft:prismarine', 'minecraft:prismarine_bricks'])
+    toTag('foxtech:stairs/prismarine', ['minecraft:prismarine_stairs', 'minecraft:prismarine_brick_stairs'])
+    toTag('foxtech:slabs/prismarine', ['minecraft:prismarine_slab', 'minecraft:prismarine_brick_slab'])
+    toTag('foxtech:vertical_slabs/prismarine', ['quark:prismarine_vertical_slab', 'quark:prismarine_brick_vertical_slab'])
+    toTag('foxtech:walls/prismarine', ['minecaft:prismarine_wall'])
+
+    toTag('foxtech:blocks/dark_prismarine', ['minecraft:dark_prismarine'])
+    toTag('foxtech:stairs/dark_prismarine', ['minecraft:dark_prismarine_stairs'])
+    toTag('foxtech:slabs/dark_prismarine', ['minecraft:dark_prismarine_slab'])
+    toTag('foxtech:vertical_slabs/dark_prismarine', ['quark:dark_prismarine_vertical_slab'])
 })

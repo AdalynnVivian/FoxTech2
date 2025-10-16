@@ -13,7 +13,9 @@ GTCEuStartupEvents.registry('gtceu:material', event => {
     
     //GTMaterials.Andesite.setProperty(PropertyKey.DUST, new $DustProperty());
     GTMaterials.Ash.setProperty(PropertyKey.INGOT, new $IngotProperty())
-    //GTMaterials.Dirt.setProperty(PropertyKey.DIRT, new $DustProperty())
+    //GTMaterials.Prismarine.setProperty(PropertyKey.DUST, new $DustProperty())
+    //GTMaterials.Dirt.setProperty(PropertyKey.DUST, new $DustProperty())
+
     event.create('limestone')
         .dust()
         .color(0x8E8B78).iconSet(GTMaterialIconSet.DULL)
@@ -40,6 +42,18 @@ GTCEuStartupEvents.registry('gtceu:material', event => {
         .dust()
         .formula('?((SiO2)(SiO2))')
         .color(0x36261D).iconSet(GTMaterialIconSet.DULL)
+    event.create('dirt')
+        .dust()
+        .color(0x8C6446).iconSet(GTMaterialIconSet.DULL)
+    event.create('mud')
+        .liquid(293)
+        .color(0x393A3C)
+    event.create('prismarine')
+        .dust()
+        .color(0x72968D).iconSet(GTMaterialIconSet.DULL)
+    event.create('dark_prismarine')
+        .dust()
+        .color(0x214A3A).iconSet(GTMaterialIconSet.DULL)
 
 
 })

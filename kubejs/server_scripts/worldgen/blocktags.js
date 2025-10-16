@@ -28,7 +28,7 @@ ServerEvents.tags('block', event => {
         'tfmg:bauxite', 'tfmg:galena', 'tfmg:lignite', 'tfmg:fireclay',
         'twigs:rhyolite', 'twigs:schist',
         'minecraft:gravel', 'ad_extendra:b_sand', 'ad_extendra:b_stone', 'ad_extendra:b_sandstone',
-        'quark:limestone', 'quark:jasper', 'quark:shale', 'quark:myalite']))
+        'quark:limestone', 'quark:jasper', 'quark:shale', 'quark:myalite', 'quark:permafrost']))
     toTag('minecraft:nether_carver_replaceables', [
         'tfmg:sulfur',
         'twigs:bloodstone', 'twigs:silt',

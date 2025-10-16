@@ -65,9 +65,9 @@ function toIngot(material, amount) { //Nuggets gfdi. NUGGETS!!!
 
 function recycle_(event) { return (itemId, products) => {
     var DICT = {
-        "andesite_alloy": {dust: [1.9, 2], fluid: [0, 0], ingot: [1.9, 30, 38], temp: 0},
+        "andesite_alloy": {dust: [1.9, 2], fluid: [3, 30], ingot: [1.9, 30, 38], temp: 0},
         "brass": {dust: [3.15, 2], fluid: [3.15, 30], ingot: [3.15, 30, 63], temp: 0},
-        "wood": {dust: [5, 2], fluid: [5, 30], ingot: [0.6, 30, 12], temp: 0},
+        "wood": {dust: [5, 2], fluid: [1, 1], ingot: [0.6, 30, 12], temp: 0},
         "stone": {dust: [4.9, 2], fluid: [1, 1], ingot: [1, 1, 1], temp: 0},
         "granite": {dust: [4.9, 2], fluid: [1, 1], ingot: [1, 1, 1], temp: 0},
         "diorite": {dust: [4.9, 2], fluid: [1, 1], ingot: [1, 1, 1], temp: 0},
@@ -84,6 +84,10 @@ function recycle_(event) { return (itemId, products) => {
         "brick": {dust: [0.75, 2], fluid: [1, 1], ingot: [1, 1, 1]},
         "quartz_sand": {dust: [4.9, 2], fluid: [1, 1], ingot: [1, 1, 1], temp: 0},
         "soul_quartz_sand": {dust: [4.9, 2], fluid: [1, 1], ingot: [1, 1, 1], temp: 0},
+        "dirt": {dust: [4.9, 2], fluid: [1, 1], ingot: [1, 1, 1], temp: 0},
+        "mud": {dust: [1, 1], fluid: [3, 30], ingot: [1, 1, 1], temp: 0},
+        "prismarine": {dust: [7.5, 2], fluid: [1, 1], ingot: [1, 1, 1], temp: 0},
+        "dark_prismarine": {dust: [7.5, 2], fluid: [1, 1], ingot: [1, 1, 1], temp: 0}
     }
     var DURATION = 0
     var ENERGY = 1

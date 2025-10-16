@@ -152,4 +152,5 @@ GTCEuStartupEvents.registry('gtceu:tag_prefix', event => {
     ob('quark', 'jasper')
     ob('quark', 'shale')
     ob('quark', 'myalite')
+    obp('quark', 'permafrost')
 })

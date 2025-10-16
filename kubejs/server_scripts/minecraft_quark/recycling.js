@@ -23,13 +23,31 @@ ServerEvents.recipes(event => {
         recycle('#foxtech:walls/'+material, ['90x '+gt])
     }
     function four(material, gt) {
+        gt = gt == undefined ? material : gt
         recycle('#foxtech:blocks/'+material, ['360x '+gt])
         recycle('#foxtech:stairs/'+material, ['270x '+gt])
         recycle('#foxtech:slabs/'+material, ['180x '+gt])
         recycle('#foxtech:vertical_slabs/'+material, ['180x '+gt])
         recycle('#foxtech:walls/'+material, ['360x '+gt])
     }
+    function nine(material, gt) { //also liquid
+        gt = gt == undefined ? material : gt
+        recycle('#foxtech:blocks/'+material, ['810x '+gt])
+        recycle('#foxtech:stairs/'+material, ['607.5x '+gt])
+        recycle('#foxtech:slabs/'+material, ['405x '+gt])
+        recycle('#foxtech:vertical_slabs/'+material, ['405x '+gt])
+        recycle('#foxtech:walls/'+material, ['810x '+gt])
+    }
+    function liquid(material, gt) {
+        gt = gt == undefined ? material : gt
+        recycle('#foxtech:blocks/'+material, ['810x '+gt])
+        recycle('#foxtech:stairs/'+material, ['607.5x '+gt])
+        recycle('#foxtech:slabs/'+material, ['405x '+gt])
+        recycle('#foxtech:vertical_slabs/'+material, ['405x '+gt])
+        recycle('#foxtech:walls/'+material, ['810x '+gt])
+    }
     stone('stone')
+    recycle('foxtech:sturdy_stone', ['810x stone'])
     stone('granite')
     stone('diorite')
     stone('andesite')
@@ -47,5 +65,11 @@ ServerEvents.recipes(event => {
     stone('sandstone', 'quartz_sand')
     stone('red_sandstone', 'quartz_sand')
     stone('soul_sandstone', 'soul_quartz_sand')
-    
+
+    stone('dirt')
+    nine('mud')
+    four('prismarine')
+    nine('dark_prismarine')
+
+
 })
