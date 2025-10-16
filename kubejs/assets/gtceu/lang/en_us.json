@@ -111,5 +111,6 @@
     "tagprefix.shale": "Shale %s Ore",
     "tagprefix.myalite": "Myalite %s Ore",
 
-    "material.gtceu.andesite_alloy": "Andesite Alloy"
+    "material.gtceu.andesite_alloy": "Andesite Alloy",
+    "material.gtceu.soul_quartz_sand": "Soul Quartz Sand"
 }

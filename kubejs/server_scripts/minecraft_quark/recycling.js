@@ -43,4 +43,9 @@ ServerEvents.recipes(event => {
     stone('tuff', 'ash')
     stone('deepslate')
     four('bricks', 'brick')
+
+    stone('sandstone', 'quartz_sand')
+    stone('red_sandstone', 'quartz_sand')
+    stone('soul_sandstone', 'soul_quartz_sand')
+    
 })

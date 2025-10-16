@@ -115,6 +115,33 @@ ServerEvents.tags('item', event => {
     toTag('foxtech:blocks/brick', ['minecraft:bricks'])
     toTag('foxtech:stairs/brick', ['minecraft:brick_stairs'])
     toTag('foxtech:slabs/brick', ['minecraft:brick_slab'])
-    toTag('foxtech:vertical_slabs/brick', ['quar:brick_vertical_slab'])
+    toTag('foxtech:vertical_slabs/brick', ['quark:brick_vertical_slab'])
     toTag('foxtech:walls/brick', ['minecraft:brick_wall'])
+
+    toTag('foxtech:blocks/sandstone', ['minecraft:sandstone', 'minecraft:chiseled_sandstone', 'minecraft:smooth_sandstone',
+        'minecraft:cut_sandstone', 'quark:sandstone_bricks'])
+    toTag('foxtech:stairs/sandstone', ['minecraft:sandstone_stairs', 'minecraft:smooth_sandstone_stairs', 'quark:sandstone_bricks_stairs'])
+    toTag('foxtech:slabs/sandstone', ['minecraft:sandstone_slab', 'minecraft:smooth_sandstone_slab', 'minecraft:cut_sandstone_slab',
+        'quark:sandstone_bricks_slab'])
+    toTag('foxtech:vertical_slabs/sandstone', ['quark:sandstone_vertical_slab', 'quark:smooth_sandstone_vertical_slab', 'quark:cut_sandstone_vertical_slab',
+        'quark:sandstone_bricks_vertical_slab'])
+    toTag('foxtech:walls/sandstone', ['minecraft:sandstone_wall', 'quark:sandstone_bricks_wall'])
+
+    toTag('foxtech:blocks/red_sandstone', ['minecraft:red_sandstone', 'minecraft:chiseled_red_sandstone', 'minecraft:smooth_red_sandstone',
+        'minecraft:cut_red_sandstone', 'quark:red_sandstone_bricks'])
+    toTag('foxtech:stairs/red_sandstone', ['minecraft:red_sandstone_stairs', 'minecraft:smooth_red_sandstone_stairs', 'quark:red_sandstone_bricks_stairs'])
+    toTag('foxtech:slabs/red_sandstone', ['minecraft:red_sandstone_slab', 'minecraft:smooth_red_sandstone_slab', 'minecraft:cut_red_sandstone_slab',
+        'quark:red_sandstone_bricks_slab'])
+    toTag('foxtech:vertical_slabs/red_sandstone', ['quark:red_sandstone_vertical_slab', 'quark:smooth_red_sandstone_vertical_slab', 'quark:cut_red_sandstone_vertical_slab',
+        'quark:red_sandstone_bricks_vertical_slab'])
+    toTag('foxtech:walls/red_sandstone', ['minecraft:red_sandstone_wall', 'quark:red_sandstone_bricks_wall'])
+
+    toTag('foxtech:blocks/soul_sandstone', ['quark:soul_sandstone', 'quark:chiseled_soul_sandstone', 'quark:smooth_soul_sandstone',
+        'quark:cut_soul_sandstone', 'quark:soul_sandstone_bricks'])
+    toTag('foxtech:stairs/soul_sandstone', ['quark:soul_sandstone_stairs', 'quark:smooth_soul_sandstone_stairs', 'quark:soul_sandstone_bricks_stairs'])
+    toTag('foxtech:slabs/soul_sandstone', ['quark:soul_sandstone_slab', 'quark:smooth_soul_sandstone_slab', 'quark:cut_soul_sandstone_slab',
+        'quark:soul_sandstone_bricks_slab'])
+    toTag('foxtech:vertical_slabs/soul_sandstone', ['quark:soul_sandstone_vertical_slab', 'quark:smooth_soul_sandstone_vertical_slab', 'quark:cut_soul_sandstone_vertical_slab',
+        'quark:soul_sandstone_bricks_vertical_slab'])
+    toTag('foxtech:walls/soul_sandstone', ['quark:soul_sandstone_wall', 'quark:soul_sandstone_bricks_wall'])
 })

@@ -35,6 +35,11 @@ GTCEuStartupEvents.registry('gtceu:material', event => {
         .color(0x9999FF).iconSet(GTMaterialIconSet.DULL)
         .components('1x clay', '1x ice', '1x stone')
         .flags(GTMaterialFlags.DECOMPOSITION_BY_CENTRIFUGING)
+    //GTMaterials.SoulSand.setProperty(PropertyKey.DUST, new $DustProperty())
+    event.create('soul_quartz_sand')
+        .dust()
+        .formula('?((SiO2)(SiO2))')
+        .color(0x231914).iconSet(GTMaterialIconSet.DULL)
 
 
 })
