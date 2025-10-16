@@ -79,6 +79,9 @@ function recycle_(event) { return (itemId, products) => {
         "permafrost": {dust: [4.9, 2], fluid: [1, 1], ingot: [1, 1, 1], temp: 0},
         "calcite": {dust: [7.5, 2], fluid: [1, 1], ingot: [1, 1, 1], temp: 0},
         "deepslate": {dust: [7.5, 2], fluid: [1, 1], ingot: [1, 1, 1], temp: 0},
+        "clay": {dust: [0.75, 2], fluid: [1, 1], ingot: [1, 1, 1]},
+        "ash": {dust: [5, 2], fluid: [5, 30], ingot: [0.6, 30, 12], temp: 0},
+        "brick": {dust: [0.75, 2], fluid: [1, 1], ingot: [1, 1, 1]}
     }
     var DURATION = 0
     var ENERGY = 1

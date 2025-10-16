@@ -21,6 +21,8 @@ ServerEvents.tags('item', event => {
     toTags(['minecraft:walls', 'foxtech:walls/normal_stone'], ['minecraft:cobblestone_wall', 'quark:cobblestone_bricks_wall', 'minecraft:mossy_cobblestone_wall',
         'quark:mossy_cobblestone_bricks_wall', 'minecraft:stone_brick_wall', 'minecraft:mossy_stone_brick_wall'])
 
+    recycle_('quark:sturdy_stone', '810x stone')
+
     toTag('foxtech:blocks/granite', ['minecraft:granite', 'minecraft:polished_granite', 'quark:granite_bricks',
         'quark:chiseled_granite_bricks', 'quark:granite_pillar'])
     toTag('foxtech:stairs/granite', ['minecraft:granite_stairs', 'minecraft:polished_granite_stairs', 'quark:granite_bricks_stairs'])
@@ -83,4 +85,36 @@ ServerEvents.tags('item', event => {
     toTag('foxtech:vertical_slabs/calcite', ['quark:calcite_vertical_slab', 'quark:polished_calcite_vertical_slab', 'quark:calcite_bricks_vertical_slab'])
     toTag('foxtech:walls/calcite', ['quark:calcite_bricks_wall', 'quark:calcite_wall'])
 
+    toTag('foxtech:blocks/dripstone', ['minecraft:dripstone_block', 'quark:polished_dripstone', 'quark:dripstone_bricks',
+        'quark:chiseled_dripstone_bricks', 'quark:dripstone_pillar'])
+    toTag('foxtech:stairs/dripstone', ['quark:dripstone_bricks_stairs', 'quark:dripstone_block_stairs', 'quark:polished_dripstone_stairs'])
+    toTag('foxtech:slabs/dripstone', ['quark:dripstone_bricks_slab', 'quark:dripstone_block_slab', 'quark:polished_dripstone_slab'])
+    toTag('foxtech:vertical_slabs/dripstone', ['quark:dripstone_bricks_vertical_slab', 'quark:dripstone_block_vertical_slab', 'quark:polished_dripstone_vertical_slab'])
+    toTag('foxtech:walls/dripstone', ['quark:dripstone_bricks_wall', 'quark:dripstone_block_wall'])
+
+    toTag('foxtech:blocks/tuff', ['minecraft:tuff', 'quark:polished_tuff', 'quark:tuff_bricks',
+        'quark:chiseled_tuff_bricks', 'quark:tuff_pillar'])
+    toTag('foxtech:stairs/tuff', ['quark:tuff_bricks_stairs', 'quark:tuff_stairs', 'quark:polished_tuff_stairs'])
+    toTag('foxtech:slabs/tuff', ['quark:tuff_bricks_slab', 'quark:tuff_slab', 'quark:polished_tuff_slab'])
+    toTag('foxtech:vertical_slabs/tuff', ['quark:tuff_bricks_vertical_slab', 'quark:tuff_vertical_slab', 'quark:polished_tuff_vertical_slab'])
+    toTag('foxtech:walls/tuff', ['quark:tuff_bricks_wall', 'quark:tuff_wall'])
+
+    toTag('foxtech:blocks/deepslate', ['minecraft:deepslate', 'minecraft:cobbled_deepslate', 'minecraft:chiseled_deepslate',
+        'minecraft:polished_deepslate', 'minecraft:deepslate_bricks', 'minecraft:cracked_deepslate_bricks', 'minecraft:deepslate_tiles',
+        'minecraft:cracked_deepslate_tiles', 'minecraft:reinfornced_deepslate'])
+    toTag('foxtech:stairs/deepslate', ['minecraft:cobbled_deepslate_stairs', 'minecraft:polished_deepslate_stairs', 'minecraft:deepslate_brick_stairs',
+        'minecraft:deepslate_tile_stairs'])
+    toTag('foxtech:slabs/deepslate', ['minecraft:cobbled_deepslate_slab', 'minecraft:polished_deepslate_slab', 'minecraft:deepslate_brick_slab',
+        'minecraft:deepslate_tile_slab'])
+    toTag('foxtech:vertical_slabs/deepslate', ['quark:cobbled_deepslate_vertical_slab', 'quark:polished_deepslate_vertical_slab', 'quark:deepslate_brick_vertical_slab',
+        'quark:deepslate_tile_vertical_slab'])
+    toTag('foxtech:walls/deepslate', ['minecraft:cobbled_deepslate_wall', 'minecraft:polished_deepslate_wall', 'minecraft:deepslate_brick_wall',
+        'minecraft:deepslate_tile_wall'
+    ])
+
+    toTag('foxtech:blocks/brick', ['minecraft:bricks'])
+    toTag('foxtech:stairs/brick', ['minecraft:brick_stairs'])
+    toTag('foxtech:slabs/brick', ['minecraft:brick_slab'])
+    toTag('foxtech:vertical_slabs/brick', ['quar:brick_vertical_slab'])
+    toTag('foxtech:walls/brick', ['minecraft:brick_wall'])
 })

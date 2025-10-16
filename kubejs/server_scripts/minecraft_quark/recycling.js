@@ -15,12 +15,19 @@ ServerEvents.recipes(event => {
     recycle('#minecraft:wooden_buttons', ['10x wood'])
 
     function stone(material, gt) {
-        gt = gt === undefined ? material : gt
+        gt = gt == undefined ? material : gt
         recycle('#foxtech:blocks/'+material, ['90x '+gt])
         recycle('#foxtech:stairs/'+material, ['67.5x '+gt])
         recycle('#foxtech:slabs/'+material, ['45x '+gt])
         recycle('#foxtech:vertical_slabs/'+material, ['45x '+gt])
         recycle('#foxtech:walls/'+material, ['90x '+gt])
+    }
+    function four(material, gt) {
+        recycle('#foxtech:blocks/'+material, ['360x '+gt])
+        recycle('#foxtech:stairs/'+material, ['270x '+gt])
+        recycle('#foxtech:slabs/'+material, ['180x '+gt])
+        recycle('#foxtech:vertical_slabs/'+material, ['180x '+gt])
+        recycle('#foxtech:walls/'+material, ['360x '+gt])
     }
     stone('stone')
     stone('granite')
@@ -32,8 +39,8 @@ ServerEvents.recipes(event => {
     stone('myalite')
     stone('permafrost')
     stone('calcite')
-    //stone('dripstone')
-    //stone('tuff')
+    stone('dripstone', 'clay')
+    stone('tuff', 'ash')
     stone('deepslate')
-
+    four('bricks', 'brick')
 })
