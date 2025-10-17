@@ -4,6 +4,15 @@ var tagItems_ = (event) => (tags, items) => tags.forEach(tag => items.forEach(it
 var replace_ = (event) => (i, o) => event.replaceInput({input: i}, i, '#' + o) //Because I know I'm going to forget the # like a dipshit
 var replaceAll_ = (event) => (is, o) => is.forEach((i) => replace_(event)(i,o)) //TODO: MAKE REPLACEMENT SKIP CERTAIN RECIPES
 
+// Fluid-tag friendly recipe builder. 
+function recipe(type, category) {
+    category = category == undefined ? type : category
+    return (event) => (id, itemIn, fluidIn, itemOut, fluidOut, duration, EUt, circuit) => {
+        
+    }
+}
+
+
 /* Remember to check for gem-hood in the recycler when creating TiC recipes.
 Perhaps make sure the material exists, and if not just use the value directly? */
 function toDust(material, amount) {

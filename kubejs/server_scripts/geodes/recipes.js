@@ -1,7 +1,7 @@
 import {toTags_, toTag_, tagItems_, replace_, replaceAll_, recycle_} from "../globalFns.js"
 
 ServerEvents.recipes(event => {
-    function crystal(material, temp, time, result) {
+    function crystal(material, temp, time, result) { //A function for melting down crystal buds and blocks.s
         event.custom({ //Small Bud Melting
             type: "tconstruct:melting",
             ingredient: {
@@ -72,6 +72,7 @@ ServerEvents.recipes(event => {
     crystal("quartz", 637, 55, "tconstruct:molten_quartz")
     crystal("diamond", 1450, 79, "tconstruct:molten_diamond")
 
+    //Recycling tests.
     recycle_(event)('create:flywheel', ['720x brass', '15x andesite_alloy'])
     recycle_(event)('create:cogwheel', ['270x wood', '15x andesite_alloy'])
 })
