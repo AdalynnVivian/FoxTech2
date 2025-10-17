@@ -1,6 +1,6 @@
 // priority: 1
 
-import {toTags_, toTag_, tagItems_, replace_, replaceAll_, recycle_} from "../globalFns.js"
+import {toTags_, toTag_, tagItems_, replace_, replaceAll_, recycle_, recipe} from "../globalFns.js"
 
 ServerEvents.recipes(event => {
     var replace = replace_(event)
@@ -45,7 +45,7 @@ ServerEvents.recipes(event => {
         cutter('foxtech:vertical_' + material + '_planks', ['1x minecraft:'+material+'_log'], ['6x quark:vertical_' + material + '_planks', '2x gtceu:wood_dust'], 200, 2)
         
     }
-    vanillaWood('oak')
+    //vanillaWood('oak')
     
     //{content: {type: gtceu:circuit, configuration: 2.0}, chance: 0.0, maxChance: 10000.0, tierChanceBoost: 0.0}
 
@@ -75,12 +75,22 @@ ServerEvents.recipes(event => {
         tickInputChanceLogics: {},
         tickOutputChanceLogics: {},
         category: 'gtceu:cutter'
-    }
-    event.forEachRecipe([{type: 'gtceu:assembler'}], recipe => {
+    }*/
+    event.forEachRecipe([{type: 'gtceu:mixer'}], recipe => {
         var json = JSON.parse(recipe.json.toString())
         console.log(json)
     })
-
+    recipe('gtceu:cutter')(event)(
+        'vp',
+        ['1x minecraft:birch_log'],
+        ['1x #forge:lubricant'],
+        ['6x quark:vertical_birch_planks'],
+        [],
+        200,
+        7,
+        2
+    )
+    /*
     event.custom({type: 'gtceu:cutter', duration: 200.0, inputs: {
             item: [
                 {content: {

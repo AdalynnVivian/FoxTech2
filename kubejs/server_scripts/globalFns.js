@@ -8,7 +8,105 @@ var replaceAll_ = (event) => (is, o) => is.forEach((i) => replace_(event)(i,o)) 
 function recipe(type, category) {
     category = category == undefined ? type : category
     return (event) => (id, itemIn, fluidIn, itemOut, fluidOut, duration, EUt, circuit) => {
-        
+        var json = {type: type, duration: duration, inputs: {
+                //Input items, input fluids, circuit
+            }, outputs: {
+                //Output items, output fluids
+            }, tickInputs: {
+                eu: [{content: EUt, chance: 10000.0, maxChance: 10000.0, tierChanceBoost: 0.0}]
+            }, tickOutputs: {}, inputChanceLogics: {}, outputChanceLogics: {}, tickInputChanceLogics: {}, tickOutputChanceLogics: {},
+            category: category
+        }
+        for(var i in itemIn) {
+            if(i == 0) json.inputs.item = []
+            
+            var amount = +itemIn[i].split(' ')[0].replace('x', '')
+            var right = itemIn[i].split(' ')[1]
+            if(right[0] == '#') { //Tag
+                right = right.slice(1)
+                json.inputs.item.push({
+                    content: {
+                        type: 'gtceu:sized', count: amount, ingredient: {tag: right}
+                    }, chance: 10000.0, maxChance: 10000.0, tierChanceBoost: 0.0
+                })
+            } else {
+                json.inputs.item.push({
+                    content: {
+                        type: 'gtceu:sized', count: amount, ingredient: {item: right}
+                    }, chance: 10000.0, maxChance: 10000.0, tierChanceBoost: 0.0
+                })
+            }
+        }
+        for(var i in fluidIn) {
+            if(i == 0) json.inputs.fluid = []
+            
+            var amount = +fluidIn[i].split(' ')[0].replace('x', '')
+            var right = fluidIn[i].split(' ')[1]
+            if(right[0] == '#') { //Tag
+                right = right.slice(1)
+                json.inputs.fluid.push({
+                    content: {amount: 1.0, value: [{tag: right}]},
+                    chance: 10000.0,
+                    maxChance: 10000.0,
+                    tierChanceBoost: 0.0
+                })
+            } else {
+                json.inputs.fluid.push({
+                    content: {amount: 1.0, value: [{fluid: right}]},
+                    chance: 10000.0,
+                    maxChance: 10000.0,
+                    tierChanceBoost: 0.0
+                })
+            }
+        }
+        for(var i in itemOut) {
+            if(i == 0) json.outputs.item = []
+            
+            var amount = +itemOut[i].split(' ')[0].replace('x', '')
+            var right = itemOut[i].split(' ')[1]
+            if(right[0] == '#') { //Tag
+                right = right.slice(1)
+                json.outputs.item.push({
+                    content: {
+                        type: 'gtceu:sized', count: amount, ingredient: {tag: right}
+                    }, chance: 10000.0, maxChance: 10000.0, tierChanceBoost: 0.0
+                })
+            } else {
+                json.outputs.item.push({
+                    content: {
+                        type: 'gtceu:sized', count: amount, ingredient: {item: right}
+                    }, chance: 10000.0, maxChance: 10000.0, tierChanceBoost: 0.0
+                })
+            }
+        }
+        for(var i in fluidOut) {
+            if(i == 0) json.outputs.fluid = []
+            
+            var amount = +fluidOut[i].split(' ')[0].replace('x', '')
+            var right = fluidOut[i].split(' ')[1]
+            if(right[0] == '#') { //Tag
+                right = right.slice(1)
+                json.outputs.fluid.push({
+                    content: {amount: 1.0, value: [{tag: right}]},
+                    chance: 10000.0,
+                    maxChance: 10000.0,
+                    tierChanceBoost: 0.0
+                })
+            } else {
+                json.outputs.fluids.push({
+                    content: {amount: 1.0, value: [{fluid: right}]},
+                    chance: 10000.0,
+                    maxChance: 10000.0,
+                    tierChanceBoost: 0.0
+                })
+            }
+        }
+        if (circuit != undefined) {
+            json.inputs.item.push(
+                {content: {type: 'gtceu:circuit', configuration: circuit}, chance: 0.0, maxChance: 10000.0, tierChanceBoost: 0.0}
+            )
+        }
+        event.custom(json)
     }
 }
 
