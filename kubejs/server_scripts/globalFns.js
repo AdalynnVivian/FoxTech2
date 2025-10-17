@@ -45,14 +45,14 @@ function recipe(type, category) {
             if(right[0] == '#') { //Tag
                 right = right.slice(1)
                 json.inputs.fluid.push({
-                    content: {amount: 1.0, value: [{tag: right}]},
+                    content: {amount: amount, value: [{tag: right}]},
                     chance: 10000.0,
                     maxChance: 10000.0,
                     tierChanceBoost: 0.0
                 })
             } else {
                 json.inputs.fluid.push({
-                    content: {amount: 1.0, value: [{fluid: right}]},
+                    content: {amount: amount, value: [{fluid: right}]},
                     chance: 10000.0,
                     maxChance: 10000.0,
                     tierChanceBoost: 0.0
@@ -87,14 +87,14 @@ function recipe(type, category) {
             if(right[0] == '#') { //Tag
                 right = right.slice(1)
                 json.outputs.fluid.push({
-                    content: {amount: 1.0, value: [{tag: right}]},
+                    content: {amount: amount, value: [{tag: right}]},
                     chance: 10000.0,
                     maxChance: 10000.0,
                     tierChanceBoost: 0.0
                 })
             } else {
                 json.outputs.fluids.push({
-                    content: {amount: 1.0, value: [{fluid: right}]},
+                    content: {amount: amount, value: [{fluid: right}]},
                     chance: 10000.0,
                     maxChance: 10000.0,
                     tierChanceBoost: 0.0
@@ -106,7 +106,7 @@ function recipe(type, category) {
                 {content: {type: 'gtceu:circuit', configuration: circuit}, chance: 0.0, maxChance: 10000.0, tierChanceBoost: 0.0}
             )
         }
-        event.custom(json)
+        event.custom(json)//.id(id)
     }
 }
 

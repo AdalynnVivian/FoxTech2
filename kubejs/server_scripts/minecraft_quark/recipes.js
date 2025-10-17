@@ -1,137 +1,80 @@
 // priority: 1
 
 import {toTags_, toTag_, tagItems_, replace_, replaceAll_, recycle_, recipe} from "../globalFns.js"
+const $GTCEuFluidIngredient = Java.loadClass("com.gregtechceu.gtceu.api.recipe.ingredient.FluidIngredient")
 
 ServerEvents.recipes(event => {
-    var replace = replace_(event)
-    function cutter(id, inputs, outputs, lubeDuration, c) {
-        var FLUIDS = ['#forge:lubricant 1', '#forge:distilled_water 3', Fluid.of('minecraft:water', 4)]
+    function cutter(id, inputs, outputs, lubeDuration, c) { //Register cutting recipes.
+        //var FLUIDS = [ftag("forge:lubricant", 1), ftag("distilled_water", 3), Fluid.of('minecraft:water', 4)]
+        var FLUIDS = ['1x #forge:lubricant', '3x #forge:distilled_water', '4x minecraft:water']
         var NAMES = ['', '_distilled_water', '_water'] 
         for(var i in FLUIDS) {
-            event.recipes.gtceu.cutter(id+NAMES[i])
+            /*event.recipes.gtceu.cutter(id+NAMES[i])
                 .itemInputs(inputs)
                 .inputFluids(FLUIDS[i])
                 .itemOutputs(outputs)
                 .duration((1+.5*i)*lubeDuration)
                 .EUt(7)
-                .circuit(c)
+                .circuit(c)*/
+            recipe('gtceu:cutter')(event)(id+NAMES[i], inputs, [FLUIDS[i]], outputs, [], (1+.5*i)*lubeDuration, 7, c)
         }
     }
     function vanillaWood(material) {
-        event.remove('gtceu:lathe/strip_'+material+'_log')
-        event.recipes.gtceu.lathe('foxtech:stripped_' + material + '_log')
+        event.remove('gtceu:lathe/strip_'+material+'_log') //Remove the stripped log recipe...
+        event.recipes.gtceu.lathe('foxtech:stripped_' + material + '_log') //So we can add a version with a circuit. 
             .itemInputs('1x minecraft:' + material + '_log')
-            .itemOutputs('1x quark:hollow_' + material + '_log', '1x gtceu:wood_dust')
+            .itemOutputs('1x quark:stripped_' + material + '_log', '1x gtceu:wood_dust')
             .duration(8*20)
             .EUt(7)
             .circuit(1)
-        event.recipes.gtceu.lathe('foxtech:hollow_' + material + '_log')
+        event.recipes.gtceu.lathe('foxtech:hollow_' + material + '_log') //Hollow log recipe
             .itemInputs('1x minecraft:' + material + '_log')
             .itemOutputs('1x quark:hollow_' + material + '_log', '1x gtceu:wood_dust')
             .duration(8*20)
             .EUt(7)
             .circuit(2)
-        event.recipes.gtceu.lathe('foxtech:' + material + '_post')
+        event.recipes.gtceu.lathe('foxtech:' + material + '_post') //Post recipe
             .itemInputs('1x minecraft:' + material + '_log')
             .itemOutputs('1x quark:' + material + '_post', '3x gtceu:wood_dust')
             .duration(8*20*3)
             .EUt(7)
             .circuit(3)
 
+        //Remove plank recipes, add a circuit version (both normal, and vertical, planks)
         event.remove('gtceu:cutter/' + material + '_planks_distilled_water')
         event.remove('gtceu:cutter/' + material + '_planks_water')
         event.remove('gtceu:cutter/' + material + '_planks')
-        cutter('foxtech:' + material + '_planks', ['1x minecraft:'+material+'_log'], ['6x minecraft:' + material + '_planks', '2x gtceu:wood_dust'], 200, 1)
-        cutter('foxtech:vertical_' + material + '_planks', ['1x minecraft:'+material+'_log'], ['6x quark:vertical_' + material + '_planks', '2x gtceu:wood_dust'], 200, 2)
+        cutter('foxtech:' + material + '_planks', ['1x minecraft:'+ material +'_log'], ['6x minecraft:' + material + '_planks', '2x gtceu:wood_dust'], 200, 1)
+        cutter('foxtech:vertical_' + material + '_planks', ['1x minecraft:'+ material +'_log'], ['6x quark:vertical_' + material + '_planks', '2x gtceu:wood_dust'], 200, 2)
         
+        event.recipes.gtceu.lathe('foxtech:stripped_' + material + '_post_from_post') //Quark post recipes
+            .itemInputs('1x quark:' + material + '_post')
+            .itemOutputs('1x quark:stripped_' + material + '_post', '1x gtceu:wood_dust')
+            .duration(8*20)
+            .EUt(7)
+        event.recipes.gtceu.lathe('foxtech:stripped_' + material + '_post_from_log') 
+            .itemInputs('1x minecraft:stripped_' + material + '_log')
+            .itemOutputs('1x quark:stripped_' + material + '_post', '3x gtceu:wood_dust')
+            .duration(8*20*3)
+            .EUt(7)
+            .circuit(3)
+        
+        event.remove('gtceu:cutter/' + material + '_slab_distilled_water') //Slbs, both vertical and horizontal
+        event.remove('gtceu:cutter/' + material + '_slab_water')
+        event.remove('gtceu:cutter/' + material + '_slab')
+        cutter('foxtech:' + material + '_slab', ['1x minecraft:' + material + '_planks'], ['2x minecraft:' + material + '_slab'], 10*20, 1)
+        cutter('foxtech:' + material + '_vertical_slab', ['1x minecraft:' + material + '_planks'], ['2x quark:' + material + '_vertical_slab'], 10*20, 2)
+
     }
-    //vanillaWood('oak')
-    
-    //{content: {type: gtceu:circuit, configuration: 2.0}, chance: 0.0, maxChance: 10000.0, tierChanceBoost: 0.0}
+    vanillaWood('oak')
+    vanillaWood('spruce')
+    vanillaWood('birch')
+    vanillaWood('jungle')
+    vanillaWood('acacia')
+    vanillaWood('dark_oak')
+    vanillaWood('mangrove')
+    vanillaWood('cherry')
 
-    /*var s = {type: 'gtceu:cutter', duration: 40.0, inputs: {
-            item: [
-                {content: {
-                    type: 'gtceu:sized', count: 1.0, ingredient: {tag: 'forge:flawless_gems/malachite'}
-                }, chance: 10000.0, maxChance: 10000.0, tierChanceBoost: 0.0}
-            ], fluid: [{
-                content: {amount: 4.0, value: [{tag: 'forge:water'}]},
-                chance: 10000.0,
-                maxChance: 10000.0,
-                tierChanceBoost: 0.0
-            }]
-        }, outputs: {
-            item: [{
-                content: {type: 'gtceu:sized', count: 2.0, ingredient: {item: 'gtceu:malachite_gem'}},
-                chance: 10000.0,
-                maxChance: 10000.0,
-                tierChanceBoost: 0.0
-            }]
-        }, tickInputs: {
-            eu: [{content: 16.0, chance: 10000.0, maxChance: 10000.0, tierChanceBoost: 0.0}]
-        }, tickOutputs: {},
-        inputChanceLogics: {},
-        outputChanceLogics: {},
-        tickInputChanceLogics: {},
-        tickOutputChanceLogics: {},
-        category: 'gtceu:cutter'
-    }*/
-    event.forEachRecipe([{type: 'gtceu:mixer'}], recipe => {
-        var json = JSON.parse(recipe.json.toString())
-        console.log(json)
-    })
-    recipe('gtceu:cutter')(event)(
-        'vp',
-        ['1x minecraft:birch_log'],
-        ['1x #forge:lubricant'],
-        ['6x quark:vertical_birch_planks'],
-        [],
-        200,
-        7,
-        2
-    )
-    /*
-    event.custom({type: 'gtceu:cutter', duration: 200.0, inputs: {
-            item: [
-                {content: {
-                    type: 'gtceu:sized', count: 1.0, ingredient: {item: 'minecraft:birch_log'}
-                }, chance: 10000.0, maxChance: 10000.0, tierChanceBoost: 0.0},
-                {content: {
-                    type: 'gtceu:circuit', configuration: 2.0
-                }, chance: 0.0, maxChance: 10000.0, tierChanceBoost: 0.0}
-            ], fluid: [{
-                content: {amount: 1.0, value: [{tag: 'forge:lubricant'}]},
-                chance: 10000.0,
-                maxChance: 10000.0,
-                tierChanceBoost: 0.0
-            }]
-        }, outputs: {
-            item: [{
-                content: {type: 'gtceu:sized', count: 6.0, ingredient: {item: 'quark:vertical_birch_planks'}},
-                chance: 10000.0,
-                maxChance: 10000.0,
-                tierChanceBoost: 0.0
-            }, {
-                content: {type: 'gtceu:sized', count: 2.0, ingredient: {item: 'gtceu:wood_dust'}},
-                chance: 10000.0,
-                maxChance: 10000.0,
-                tierChanceBoost: 0.0
-            }]
-        }, tickInputs: {
-            eu: [{content: 7.0, chance: 10000.0, maxChance: 10000.0, tierChanceBoost: 0.0}]
-        }, tickOutputs: {},
-        inputChanceLogics: {},
-        outputChanceLogics: {},
-        tickInputChanceLogics: {},
-        tickOutputChanceLogics: {},
-        category: 'gtceu:cutter'
-    })
-
-    replace('gtceu:lubricant', 'forge:lubricant')
-    replace('gtceu:distilled_water', 'forge:distilled_water') */
-    
-    /* Replace the vanilla lathe recipes with a circuit version */
-    /* Replace the vanilla cutter recipes with a circuit version */
     event.recipes.gtceu.centrifuge('foxtech:soul_quartz_sand')
         .itemInputs('2x gtceu:soul_quartz_sand_dust')
         .itemOutputs('1x gtceu:quartz_sand_dust', '1x mysticalagriculture:nether_essence')
