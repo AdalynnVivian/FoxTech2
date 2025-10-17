@@ -1,6 +1,50 @@
 import {toTags_, toTag_, tagItems_, replace_, replaceAll_, recycle_} from "../globalFns.js"
 
 ServerEvents.recipes(event => {
+    function cutter(id, inputs, outputs, lubeDuration, c) {
+        var FLUIDS = [Fluid.of('gtceu:lubricant'), Fluid.of('gtceu:distilled_water', 2), Fluid.of('minecraft:water', 4)]
+        var NAMES = ['', '_distilled_water', '_water'] 
+        // 1 + .5*i
+        for(var i in FLUIDS) {
+            event.recipes.gtceu.cutter(id+NAMES[i])
+                .itemInputs(inputs)
+                .inputFluids(FLUIDS[i])
+                .itemOutputs(outputs)
+                .duration((1 + 0.5*i)*lubeDuration)
+                .EUt(7)
+                .circuit(c)
+        }
+    }
+    function vanillaWood(material) {
+        event.remove('gtceu:lathe/strip_'+material+'_log')
+        event.recipes.gtceu.lathe('foxtech:stripped_' + material + '_log')
+            .itemInputs('1x minecraft:' + material + '_log')
+            .itemOutputs('1x quark:hollow_' + material + '_log', '1x gtceu:wood_dust')
+            .duration(8*20)
+            .EUt(7)
+            .circuit(1)
+        event.recipes.gtceu.lathe('foxtech:hollow_' + material + '_log')
+            .itemInputs('1x minecraft:' + material + '_log')
+            .itemOutputs('1x quark:hollow_' + material + '_log', '1x gtceu:wood_dust')
+            .duration(8*20)
+            .EUt(7)
+            .circuit(2)
+        event.recipes.gtceu.lathe('foxtech:' + material + '_post')
+            .itemInputs('1x minecraft:' + material + '_log')
+            .itemOutputs('1x quark:' + material + '_post', '3x gtceu:wood_dust')
+            .duration(8*20*3)
+            .EUt(7)
+            .circuit(3)
+        cutter('foxtech:vertical_' + material + '_planks', ['1x minecraft:'+material+'_log'], ['6x quark:vertical_' + material + '_planks', '2x gtceu:wood_dust'], 200, 2)
+        
+    }
+    vanillaWood('oak')
+    event.forEachRecipe([{type: 'gtceu:lathe'}, {type: 'gtceu:cutter'}], recipe => {
+        var json = JSON.parse(recipe.json.toString())
+        console.log(json)
+    })
+    /* Replace the vanilla lathe recipes with a circuit version */
+    /* Replace the vanilla cutter recipes with a circuit version */
     event.recipes.gtceu.centrifuge('foxtech:soul_quartz_sand')
         .itemInputs('2x gtceu:soul_quartz_sand_dust')
         .itemOutputs('1x gtceu:quartz_sand_dust', '1x mysticalagriculture:nether_essence')
