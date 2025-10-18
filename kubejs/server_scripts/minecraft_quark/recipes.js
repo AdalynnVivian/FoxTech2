@@ -45,18 +45,21 @@ ServerEvents.recipes(event => {
             .itemOutputs('1x quark:stripped_' + material + '_post', '1x gtceu:wood_dust')
             .duration(8*20)
             .EUt(7)
+        //Replace the long stick recipe with a circuit version.
         event.recipes.gtceu.lathe('foxtech:stripped_' + material + '_post_from_log') 
             .itemInputs('1x minecraft:stripped_' + material + '_log')
             .itemOutputs('1x quark:stripped_' + material + '_post', '3x gtceu:wood_dust')
             .duration(8*20*3)
             .EUt(7)
-            .circuit(3)
+            .circuit(2)
         
         event.remove('gtceu:cutter/' + material + '_slab_distilled_water') //Slbs, both vertical and horizontal
         event.remove('gtceu:cutter/' + material + '_slab_water')
         event.remove('gtceu:cutter/' + material + '_slab')
         cutter('foxtech:' + material + '_slab', ['1x minecraft:' + material + '_planks'], ['2x minecraft:' + material + '_slab'], 10*20, 1)
         cutter('foxtech:' + material + '_vertical_slab', ['1x minecraft:' + material + '_planks'], ['2x quark:' + material + '_vertical_slab'], 10*20, 2)
+
+        //Stripping Posts with IE.
     }
 
     vanillaWood('oak')
@@ -70,7 +73,46 @@ ServerEvents.recipes(event => {
 
     event.remove('botania:mana_infusion/cherry_log_to_oak_log')
     function quarkWood(material) {
-
+        //Log -> Hollow log + 1 Wood Dust. GT Lathe 8s @ 7EU/t [2]
+        //4x Log -> 3x Wood. MI Packer 5s @ 2EU/t <<Cherry isn't there for some reason???>>
+        //Log -> Stripped Log + 1 Wood Dust. GT Lathe 8s @ 7EU/t [1]
+        //Log, 81mB Lubricant -> Stripped Log. MI Cutting Machine 5s @ 2EU/t
+        //Log -> Stripped Log + Sawdust. IE Sawmill
+        //Wood -> Stripped Wood + 1 Wood dust. GT Lathe 8s @ 7EU/t
+        //Wood, 81mB Lubricant -> Stripped Wood. MI Cutting Machine 5s @ 2EU/t
+        //4x Stripped Log -> 3x Stripped Wood. MI Packer 5s @ 2EU/t
+        //Wood -> Sripped Wood + Sawdust. IE Sawmill.
+        //Log, Saw -> 6 Planks. Crafting
+        //Log, [1mB, 3mB, 4mB] $Lube -> 6 Planks + 2 Wood Dust. GT Cutter [10, 15, 20]s @ 7EUt. [1]
+        //Log, 81mB Lubricant -> 6 Planks. MI Cutting Machine 5s @ 2EU/t
+        //Door -> Plank + Sawdust. IE Sawmill
+        //Stairs -> Plank + Sawdust. IE Sawmill
+        //Stripped [Log/Wood] -> 6 Planks + Sawdust
+        //Trapdoor -> 3 Planks. Mek Precision Sawmill
+        //Door -> 2 Planks. Mek PS
+        //Pressure Plate -> Plank + 2 Sawdust@25%. Mek PS
+        //Log -> 6 Planks + Sawdust@25%. Mek PS
+        //Hanging Sign -> 2 Planks + Sawdust@50%. Mek PS.
+        //Fence Gate -> 2 Planks + 4 Sticks@100%. Mek PS.
+        //Boat -> 5 Planks
+        //Log (the tag) -> 6 Planks + Sawdust + 0.15XP, Thermal Sawmill 1000RF
+        //Log, [1mB, 3mB, 4mB] $Lube -> 6 Vertical Planks + 2 Wood Dust. GT Cutter [10, 15, 20]s @ 7EUt. [2]
+        //3 Planks -> 4 Stairs. GT Assembler 5s @ 1EU/t
+        //Planks, [1mB, 3mB, 4mB] $Lube -> 2 Slabs. GT Cutter [10, 15, 20]s @ 7EUt. [1]
+        //Planks, 81mB Lubricant -> 2 Slabs. MI Cutting Machine 5s @ 2EU/t
+        //Planks -> 2 Slabs. IE Sawmill
+        //Planks, Saw -> 2 Slabs. Crafting
+        //Planks, [1mB, 3mB, 4mB] $Lube -> 2 Vertical Slabs. GT Cutter [10, 15, 20]s @ 7EUt. [2]
+        //Post -> Stripped Post, Sawdust. GT Lathe 8s @ 7EU/t
+        //Stripped Log -> Stripped Post, 3 Sawdust. GT Lathe 24s @ 7EU/t [2]
+        //Planks -> Fence. GT Assember 5s @ 4EU/t [13]
+        //2 Planks, 2 #forge:rods/wooden -> Fence Gate. GT Assembler 5s @ 4EU/t [2]
+        //6 Planks -> 3 Doors. GT Assembler 30s @ 4EU/t [6]
+        //6 Planks -> 4 Trapdoors. GT Assembler 5s @ 4EU/t [3]
+        //Slab, [1mB, 4mB, 5mB] $Lbe -> 8 Pressure Plates. GT Cutter [12.5, 18.75, 25]s @ 7EU/t
+        //Pressure Plate, [1mB, 4mB, 5mB] $Lube -> 12 Buttons. GT Cutter [12.5, 18.75, 25]s @ 7EU/t
+        
+        //Stripping Posts with IE
     }
     $.alchemy('foxtech:cherry_log_to_ancient_log', 'minecraft:cherry_log', 'quark:ancient_log', 40, "botania:log_cycle")
     $.alchemy('foxtech:ancient_log_to_azalea_log', 'quark:ancient_log', 'quark:azalea_log', 40, "botania:log_cycle")
