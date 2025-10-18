@@ -19,11 +19,11 @@ ServerEvents.recipes(event => {
             recipe('gtceu:cutter')(event)(id+NAMES[i], inputs, [FLUIDS[i]], outputs, [], (1+.5*i)*lubeDuration, 7, c)
         }
     }
-    function vanillaWood(material) {
+    function vanillaWood(material) { //Create the recipes for vanilla wood types
         event.remove('gtceu:lathe/strip_'+material+'_log') //Remove the stripped log recipe...
         event.recipes.gtceu.lathe('foxtech:stripped_' + material + '_log') //So we can add a version with a circuit. 
             .itemInputs('1x minecraft:' + material + '_log')
-            .itemOutputs('1x quark:stripped_' + material + '_log', '1x gtceu:wood_dust')
+            .itemOutputs('1x minecraft:stripped_' + material + '_log', '1x gtceu:wood_dust')
             .duration(8*20)
             .EUt(7)
             .circuit(1)
@@ -64,6 +64,8 @@ ServerEvents.recipes(event => {
         event.remove('gtceu:cutter/' + material + '_slab')
         cutter('foxtech:' + material + '_slab', ['1x minecraft:' + material + '_planks'], ['2x minecraft:' + material + '_slab'], 10*20, 1)
         cutter('foxtech:' + material + '_vertical_slab', ['1x minecraft:' + material + '_planks'], ['2x quark:' + material + '_vertical_slab'], 10*20, 2)
+    }
+    function quarkWood(material) {
 
     }
     vanillaWood('oak')
@@ -75,6 +77,8 @@ ServerEvents.recipes(event => {
     vanillaWood('mangrove')
     vanillaWood('cherry')
 
+    //Botania alchemy recipes
+    
     event.recipes.gtceu.centrifuge('foxtech:soul_quartz_sand')
         .itemInputs('2x gtceu:soul_quartz_sand_dust')
         .itemOutputs('1x gtceu:quartz_sand_dust', '1x mysticalagriculture:nether_essence')

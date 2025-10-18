@@ -1,5 +1,5 @@
 import {toTags_, toTag_, tagItems_, replace_, replaceAll_, recycle_} from "../globalFns.js"
-
+import FoxTechAddon from "../addon.js"
 ServerEvents.tags('item', event => {
     var toTags = toTags_(event)
     
