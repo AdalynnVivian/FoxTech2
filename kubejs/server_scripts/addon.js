@@ -113,7 +113,6 @@ function FoxTechAddon(event) {
             event.custom(json)//.id(id)
         }
     }
-    resultObject.lathe = resultObject.recipe('gtceu:lathe')
     resultObject.cutter = resultObject.recipe('gtceu:cutter')
 
     /* RECYCLING RECIPES */

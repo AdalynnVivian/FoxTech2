@@ -1,22 +1,15 @@
 // priority: 1
 
-import {toTags_, toTag_, tagItems_, replace_, replaceAll_, recycle_, recipe} from "../globalFns.js"
-const $GTCEuFluidIngredient = Java.loadClass("com.gregtechceu.gtceu.api.recipe.ingredient.FluidIngredient")
+import FoxTechAddon from "../addon.js"
 
 ServerEvents.recipes(event => {
+    var $ = FoxTechAddon(event)
+
     function cutter(id, inputs, outputs, lubeDuration, c) { //Register cutting recipes.
-        //var FLUIDS = [ftag("forge:lubricant", 1), ftag("distilled_water", 3), Fluid.of('minecraft:water', 4)]
         var FLUIDS = ['1x #forge:lubricant', '3x #forge:distilled_water', '4x minecraft:water']
         var NAMES = ['', '_distilled_water', '_water'] 
         for(var i in FLUIDS) {
-            /*event.recipes.gtceu.cutter(id+NAMES[i])
-                .itemInputs(inputs)
-                .inputFluids(FLUIDS[i])
-                .itemOutputs(outputs)
-                .duration((1+.5*i)*lubeDuration)
-                .EUt(7)
-                .circuit(c)*/
-            recipe('gtceu:cutter')(event)(id+NAMES[i], inputs, [FLUIDS[i]], outputs, [], (1+.5*i)*lubeDuration, 7, c)
+            $.cutter(id+NAMES[i], inputs, [FLUIDS[i]], outputs, [], (1+.5*i)*lubeDuration, 7, c)
         }
     }
     function vanillaWood(material) { //Create the recipes for vanilla wood types
@@ -65,9 +58,7 @@ ServerEvents.recipes(event => {
         cutter('foxtech:' + material + '_slab', ['1x minecraft:' + material + '_planks'], ['2x minecraft:' + material + '_slab'], 10*20, 1)
         cutter('foxtech:' + material + '_vertical_slab', ['1x minecraft:' + material + '_planks'], ['2x quark:' + material + '_vertical_slab'], 10*20, 2)
     }
-    function quarkWood(material) {
 
-    }
     vanillaWood('oak')
     vanillaWood('spruce')
     vanillaWood('birch')
@@ -77,8 +68,10 @@ ServerEvents.recipes(event => {
     vanillaWood('mangrove')
     vanillaWood('cherry')
 
-    //Botania alchemy recipes
-    
+    function quarkWood(material) {
+
+    }
+
     event.recipes.gtceu.centrifuge('foxtech:soul_quartz_sand')
         .itemInputs('2x gtceu:soul_quartz_sand_dust')
         .itemOutputs('1x gtceu:quartz_sand_dust', '1x mysticalagriculture:nether_essence')

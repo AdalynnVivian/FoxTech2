@@ -1,7 +1,8 @@
-import {toTags_, toTag_, tagItems_, replace_, replaceAll_, recycle_} from "../globalFns.js"
+import FoxTechAddon from "../addon.js"
 
 ServerEvents.recipes(event => {
-    var recycle = recycle_(event)
+    var recycle = FoxTechAddon(event).recycle
+
     recycle('#quark:logs', ['90x wood'])
     recycle('#quark:hollow_logs', ['90x wood'])
     recycle('#minecraft:planks', ['90x wood'])

@@ -1,6 +1,8 @@
-import {toTags_, toTag_, tagItems_, replace_, replaceAll_, recycle_} from "../globalFns.js"
+import FoxTechAddon from "../addon.js"
 
 ServerEvents.recipes(event => {
+    var $ = FoxTechAddon(event)
+
     function crystal(material, temp, time, result) { //A function for melting down crystal buds and blocks.s
         event.custom({ //Small Bud Melting
             type: "tconstruct:melting",
@@ -73,6 +75,6 @@ ServerEvents.recipes(event => {
     crystal("diamond", 1450, 79, "tconstruct:molten_diamond")
 
     //Recycling tests.
-    recycle_(event)('create:flywheel', ['720x brass', '15x andesite_alloy'])
-    recycle_(event)('create:cogwheel', ['270x wood', '15x andesite_alloy'])
+    $.recycle('create:flywheel', ['720x brass', '15x andesite_alloy'])
+    $.recycle('create:cogwheel', ['270x wood', '15x andesite_alloy'])
 })

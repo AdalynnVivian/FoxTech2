@@ -1,26 +1,8 @@
-import {toTags_, toTag_, tagItems_, replace_, replaceAll_, recycle_} from "../globalFns.js"
+import FoxTechAddon from "../addon.js"
 
 ServerEvents.tags('item', event => {
-    var toTags = toTags_(event)
-    var toTag = toTag_(event)
-    var tagItems = tagItems_(event)
-    /*function toTags(tags, item) {
-        tags.forEach(tag => {
-           event.add(tag, item)
-        })
-    }
-    function toTag(tag, items) {
-        items.forEach(item => {
-            event.add(tag, item)
-        })
-    }
-    function tagItems(tags, items) {
-        tags.forEach(tag => {
-            items.forEach(item => {
-                event.add(tag, item)
-            })
-        })
-    }*/
+    var $ = FoxTechAddon(event)
+
     function crystal(material, overrides) {
         if(overrides === undefined) {
             overrides = {}
@@ -48,19 +30,19 @@ ServerEvents.tags('item', event => {
     crystal("echo", {block: "geodes:echo_block"})
     crystal("gypsum", {cluster: "geodes:gypsum_rose"})
 
-    toTags(["forge:gems", "forge:gems/gypsum"], "geodes:gypsum_shard")
-    toTags(["forge:raw_materials", "forge:raw_materials/pyrite"], "geodes:pyrite_chunk")
-    toTags(["forge:storage_blocks", "forge:storage_blocks/raw_pyrite"], "geodes:pyrite")
+    $.toTags(["forge:gems", "forge:gems/gypsum"], "geodes:gypsum_shard")
+    $.toTags(["forge:raw_materials", "forge:raw_materials/pyrite"], "geodes:pyrite_chunk")
+    $.toTags(["forge:storage_blocks", "forge:storage_blocks/raw_pyrite"], "geodes:pyrite")
 
-    toTag("minecraft:stairs", ["geodes:pyrite_stairs", "geodes:calcite_stairs", "geodes:polished_gypsum_stairs", "geodes:smooth_gypsum_stairs"])
-    toTag("minecraft:slabs", ["geodes:pyrite_slab", "geodes:calcite_slab", "geodes:polished_gypsum_slab", "geodes:smooth_gypsum_slab"])
-    toTag("minecraft:walls", ["geodes:pyrite_wall", "geodes:calcite_wall", "geodes:polished_gypsum_wall", "geodes:smooth_gypsum_wall"])
+    $.toTag("minecraft:stairs", ["geodes:pyrite_stairs", "geodes:calcite_stairs", "geodes:polished_gypsum_stairs", "geodes:smooth_gypsum_stairs"])
+    $.toTag("minecraft:slabs", ["geodes:pyrite_slab", "geodes:calcite_slab", "geodes:polished_gypsum_slab", "geodes:smooth_gypsum_slab"])
+    $.toTag("minecraft:walls", ["geodes:pyrite_wall", "geodes:calcite_wall", "geodes:polished_gypsum_wall", "geodes:smooth_gypsum_wall"])
 })
 
 ServerEvents.recipes(event => {
-    var replace = replace_(event)
-    var replaceAll = replaceAll_(event)
-    replace("geodes:gypsum_shard", "forge:gems/gypsum")
-    replace("geodes:pyrite_chunk", "forge:raw_materials/pyrite")
-    replace("geodes:pyrite", "forge:storage_blocks/gypsum")
+    var $ = FoxTechAddon(event)
+
+    $.replace("geodes:gypsum_shard", "forge:gems/gypsum")
+    $.replace("geodes:pyrite_chunk", "forge:raw_materials/pyrite")
+    $.replace("geodes:pyrite", "forge:storage_blocks/gypsum")
 })
