@@ -77,7 +77,7 @@ ServerEvents.recipes(event => {
             .itemOutputs('2x quark:stripped_' + material + '_post')
             .duration(8*20)
             .EUt(7)
-            .circuit(2)
+            .circuit(3)
         event.recipes.gtceu.lathe('foxtech:long_wood_rod_from_' + material + '_slog')
             .itemInputs('1x minecraft:stripped_' + material + '_wood')
             .itemOutputs('4x gtceu:long_wood_rod', '1x gtceu:wood_dust')
@@ -89,7 +89,7 @@ ServerEvents.recipes(event => {
             .itemOutputs('2x quark:stripped_' + material + '_post')
             .duration(8*20)
             .EUt(7)
-            .circuit(2)
+            .circuit(3)
         
         event.remove('gtceu:cutter/' + material + '_slab_distilled_water') //Slbs, both vertical and horizontal
         event.remove('gtceu:cutter/' + material + '_slab_water')
