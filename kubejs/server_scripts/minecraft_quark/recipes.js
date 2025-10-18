@@ -13,7 +13,7 @@ ServerEvents.recipes(event => {
         }
     }
     function vanillaWood(material) { //Create the recipes for vanilla wood types
-        event.remove('gtceu:lathe/strip_'+material+'_log') //Remove the stripped log recipe...
+        event.remove('gtceu:lathe/strip_' + material + '_log') //Remove the stripped log recipe...
         event.recipes.gtceu.lathe('foxtech:stripped_' + material + '_log') //So we can add a version with a circuit. 
             .itemInputs('1x minecraft:' + material + '_log')
             .itemOutputs('1x minecraft:stripped_' + material + '_log', '1x gtceu:wood_dust')
@@ -26,10 +26,24 @@ ServerEvents.recipes(event => {
             .duration(8*20)
             .EUt(7)
             .circuit(2)
-        event.recipes.gtceu.lathe('foxtech:' + material + '_post') //Post recipe
+        event.recipes.gtceu.lathe('foxtech:' + material + '_post_from_log') //Post recipe
             .itemInputs('1x minecraft:' + material + '_log')
-            .itemOutputs('1x quark:' + material + '_post', '3x gtceu:wood_dust')
-            .duration(8*20*3)
+            .itemOutputs('2x quark:' + material + '_post')
+            .duration(8*20)
+            .EUt(7)
+            .circuit(3)
+
+        event.remove('gtceu:lathe/strip_' + material + '_wood') //Remove the stripped wood recipe...
+        event.recipes.gtceu.lathe('foxtech:stripped_' + material + '_wood') //So we can add a version with a circuit
+            .itemInputs('1x minecraft:' + material + '_wood')
+            .itemOutputs('1x minecraft:stripped_' + material + '_wood')
+            .duration(8*20)
+            .EUt(7)
+            .circuit(1)
+        event.recipes.gtceu.lathe('foxtech:' + material + '_post_from_wood') //Post recipe
+            .itemInputs('1x minecraft:' + material + '_wood')
+            .itemOutputs('1x minecraft:stripped_' + material + '_wood')
+            .duration(8*20)
             .EUt(7)
             .circuit(3)
 
@@ -39,17 +53,41 @@ ServerEvents.recipes(event => {
         event.remove('gtceu:cutter/' + material + '_planks')
         cutter('foxtech:' + material + '_planks', ['1x minecraft:'+ material +'_log'], ['6x minecraft:' + material + '_planks', '2x gtceu:wood_dust'], 200, 1)
         cutter('foxtech:vertical_' + material + '_planks', ['1x minecraft:'+ material +'_log'], ['6x quark:vertical_' + material + '_planks', '2x gtceu:wood_dust'], 200, 2)
-        
-        event.recipes.gtceu.lathe('foxtech:stripped_' + material + '_post_from_post') //Quark post recipes
+    
+        //Replace the long stick recipes with a circuit version. TODO
+
+
+        event.recipes.gtceu.lathe('foxtech:stripped_' + material + '_post_from_post') //Quark stripped post from post
             .itemInputs('1x quark:' + material + '_post')
             .itemOutputs('1x quark:stripped_' + material + '_post', '1x gtceu:wood_dust')
             .duration(8*20)
             .EUt(7)
-        //Replace the long stick recipe with a circuit version.
-        event.recipes.gtceu.lathe('foxtech:stripped_' + material + '_post_from_log') 
+    
+        event.remove('gtceu:lathe/lathe_stripped_' + material + '_wood') //Remove the recipes that produce long wood rods...
+        event.remove('gtceu:lathe/lathe_stripped_' + material + '_log') //i.e. with stripped wood & logs as inputs
+
+        event.recipes.gtceu.lathe('foxtech:long_wood_rod_from_' + material + 's_log') //So we can add a circuited version of the original
             .itemInputs('1x minecraft:stripped_' + material + '_log')
-            .itemOutputs('1x quark:stripped_' + material + '_post', '3x gtceu:wood_dust')
-            .duration(8*20*3)
+            .itemOutputs('4x gtceu:long_wood_rod', '1x gtceu:wood_dust')
+            .duration(8*20)
+            .EUt(7)
+            .circuit(1)
+        event.recipes.gtceu.lathe('foxtech:stripped_' + material + '_post_from_slog') // And recipes or producing stripped posts
+            .itemInputs('1x minecraft:stripped_' + material + '_log')
+            .itemOutputs('2x quark:stripped_' + material + '_post')
+            .duration(8*20)
+            .EUt(7)
+            .circuit(2)
+        event.recipes.gtceu.lathe('foxtech:long_wood_rod_from_' + material + '_slog')
+            .itemInputs('1x minecraft:stripped_' + material + '_wood')
+            .itemOutputs('4x gtceu:long_wood_rod', '1x gtceu:wood_dust')
+            .duration(8*20)
+            .EUt(7)
+            .circuit(1)
+        event.recipes.gtceu.lathe('foxtech:stripped_' + material + '_post_from_swood')
+            .itemInputs('1x minecraft:stripped_' + material + '_wood')
+            .itemOutputs('2x quark:stripped_' + material + '_post')
+            .duration(8*20)
             .EUt(7)
             .circuit(2)
         
@@ -87,14 +125,14 @@ ServerEvents.recipes(event => {
         //Log, 81mB Lubricant -> 6 Planks. MI Cutting Machine 5s @ 2EU/t
         //Door -> Plank + Sawdust. IE Sawmill
         //Stairs -> Plank + Sawdust. IE Sawmill
-        //Stripped [Log/Wood] -> 6 Planks + Sawdust
+        //Stripped [Log/Wood] -> 6 Planks + Sawdust. IE Sawmill
         //Trapdoor -> 3 Planks. Mek Precision Sawmill
         //Door -> 2 Planks. Mek PS
         //Pressure Plate -> Plank + 2 Sawdust@25%. Mek PS
         //Log -> 6 Planks + Sawdust@25%. Mek PS
         //Hanging Sign -> 2 Planks + Sawdust@50%. Mek PS.
         //Fence Gate -> 2 Planks + 4 Sticks@100%. Mek PS.
-        //Boat -> 5 Planks
+        //Boat -> 5 Planks. Mek PS.
         //Log (the tag) -> 6 Planks + Sawdust + 0.15XP, Thermal Sawmill 1000RF
         //Log, [1mB, 3mB, 4mB] $Lube -> 6 Vertical Planks + 2 Wood Dust. GT Cutter [10, 15, 20]s @ 7EUt. [2]
         //3 Planks -> 4 Stairs. GT Assembler 5s @ 1EU/t
