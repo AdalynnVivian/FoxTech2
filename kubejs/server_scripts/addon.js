@@ -8,7 +8,7 @@ function FoxTechAddon(event) {
     resultObject.replace = (i, o) => event.replaceInput({input: i}, i, '#' + o) //Because I know I'm going to forget the # like a dipshit
     resultObject.replaceAll = (is, o) => is.forEach((i) => resultObject.replace(i,o)) //TODO: MAKE REPLACEMENT SKIP CERTAIN RECIPES
 
-    /* Fluid-tag friendly recipe constructors */
+    /* Fluid-tag friendly recipe constructors - GregTech */
     resultObject.recipe = (type, category) => {
         category = category == undefined ? type : category
         return (id, itemIn, fluidIn, itemOut, fluidOut, duration, EUt, circuit) => {
@@ -250,6 +250,31 @@ function FoxTechAddon(event) {
             .itemOutputs(arcFurnace.outputs)
             .duration(arcFurnace.time * 20)
             .EUt(arcFurnace.EUt)
+
+    }
+    
+    /* Botania Catalyst Recipes */
+    
+    resultObject.alchemy = (id, input, output, mana, group) => {
+        var amount, right
+        if(output.search(/[0-9]/) == 0) {
+            amount = +output.split(' ')[0].replace('x', '')
+            right = output.split(' ')[1]
+        } else {
+            amount = 1
+            right = output
+        }
+        var json = {
+            type: "botania:mana_infusion",
+            catalyst: {type: "block", block: "alchemy_catalyst"},
+            input: {item: input},
+            mana: mana,
+            output: {count: amount, item: right}
+        }
+        if(group != undefined) {
+            json.group = group
+        }
+        event.custom(json).id(id)
     }
 
     return resultObject

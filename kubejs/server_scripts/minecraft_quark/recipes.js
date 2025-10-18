@@ -68,9 +68,13 @@ ServerEvents.recipes(event => {
     vanillaWood('mangrove')
     vanillaWood('cherry')
 
+    event.remove('botania:mana_infusion/cherry_log_to_oak_log')
     function quarkWood(material) {
 
     }
+    $.alchemy('foxtech:cherry_log_to_ancient_log', 'minecraft:cherry_log', 'quark:ancient_log', 40, "botania:log_cycle")
+    $.alchemy('foxtech:ancient_log_to_azalea_log', 'quark:ancient_log', 'quark:azalea_log', 40, "botania:log_cycle")
+    $.alchemy('foxtech:azalea_log_to_blossom_log', 'quark:azalea_log', 'quark:blossom_log', 40, "botania:log_cycle")
 
     event.recipes.gtceu.centrifuge('foxtech:soul_quartz_sand')
         .itemInputs('2x gtceu:soul_quartz_sand_dust')
